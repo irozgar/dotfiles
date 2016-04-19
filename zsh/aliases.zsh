@@ -1,5 +1,5 @@
 alias ls='ls --color'
-alias ll='ls -lA'
+alias l='ls'
+alias ll='ls -l'
+alias la='ll -a'
 
-# Symfony development aliases
-alias sf2='php app/console'
