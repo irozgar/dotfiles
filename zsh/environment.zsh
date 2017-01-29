@@ -7,7 +7,13 @@ export HISTTIMEFORMAT='%F %T '
 [[ ! -d "$ZSH_CACHE" ]] && mkdir -p $ZSH_CACHE
 
 # executable path
-export PATH="$HOME/.local/bin:$HOME/.composer/vendor/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.composer/vendor/bin:$PATH"
+
+# if ruby is found, add the user gems dir to the path
+which ruby > /dev/null
+if [ "$?" -eq 0 ]; then
+    export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH"
+fi
 
 # CDPATH
 export CDPATH="$HOME"
